@@ -20,10 +20,14 @@ class App extends Component {
     });
   };
   addWork = (work) => {
+    work.id = Math.random() + Date.now();
+    //console.log(Date.now());
     let worklist = [...this.state.worklist, work];
     this.setState({
       worklist: worklist,
     });
+
+    //console.log(work.id);
   };
   render() {
     return (
