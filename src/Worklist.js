@@ -7,7 +7,14 @@ const Worklist = (props) => {
       worklist.map((work) => {
         return (
           <div className='red collection-item' key={work.id}>
-            <span> {work.body} </span>
+            <span
+              onClick={() => {
+                deleteWork(work.id);
+              }}
+            >
+              {" "}
+              {work.body}{" "}
+            </span>
             <button
               className='green right'
               onClick={() => {

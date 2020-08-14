@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Worklist from "./Worklist";
+import AddWork from "./AddWork";
 
 class App extends Component {
   state = {
@@ -10,9 +11,16 @@ class App extends Component {
     ],
   };
   deleteWork = (id) => {
+    console.log(id);
     let worklist = this.state.worklist.filter((work) => {
       return work.id !== id;
     });
+    this.setState({
+      worklist: worklist,
+    });
+  };
+  addWork = (work) => {
+    let worklist = [...this.state.worklist, work];
     this.setState({
       worklist: worklist,
     });
@@ -24,7 +32,7 @@ class App extends Component {
           <i>Todo's</i>
         </h1>
         <Worklist worklist={this.state.worklist} deleteWork={this.deleteWork} />
-        {this.state.worklist.body}
+        <AddWork addWork={this.addWork} />
       </div>
     );
   }
